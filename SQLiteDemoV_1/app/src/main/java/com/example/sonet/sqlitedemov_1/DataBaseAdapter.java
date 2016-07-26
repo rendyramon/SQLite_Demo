@@ -2,6 +2,7 @@ package com.example.sonet.sqlitedemov_1;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -25,6 +26,25 @@ public class DataBaseAdapter  {
         contentValues.put(helper.PASSWORD,password);
         long id = database.insert(helper.TABLE_NAME,null,contentValues);
         return id;
+    }
+
+    public String querySelectAll()
+    {
+        String[] columns = {helper.UID,helper.NAME,helper.PASSWORD};
+        SQLiteDatabase database = helper.getWritableDatabase();
+        Cursor cursor =  database.query(helper.TABLE_NAME,columns,null,null,null,null,null);
+
+        StringBuffer buffer = new StringBuffer();
+
+        while(cursor.moveToNext())
+        {
+            int cid = cursor.getInt(0);
+            String name = cursor.getString(1);
+            String password = cursor.getString(2);
+            buffer.append(cid+" "+name+" "+password+"\n");
+        }
+
+        return buffer.toString();
     }
 
     static class DataBaseHelper extends SQLiteOpenHelper

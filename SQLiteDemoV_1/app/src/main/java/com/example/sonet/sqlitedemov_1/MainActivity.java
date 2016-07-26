@@ -42,4 +42,9 @@ public class MainActivity extends AppCompatActivity {
             Massage.getMassage(this,"Inserted Successfully");
         }
     }
+
+    public void getAllData(View view) {
+        String alldata= dataBaseAdapter.querySelectAll();
+        Massage.getMassage(this,alldata);
+    }
 }
