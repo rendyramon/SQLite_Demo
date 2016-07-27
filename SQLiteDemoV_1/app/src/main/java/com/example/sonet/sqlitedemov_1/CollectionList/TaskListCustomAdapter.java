@@ -34,10 +34,9 @@ public class TaskListCustomAdapter extends ArrayAdapter<TaskList> {
             convertView = inflater.inflate(R.layout.activity_main_liststyle,null,true);
         }
 
-        TaskList taskList = TaskLists.get(position);
         TextView taskName = (TextView) convertView.findViewById(R.id.taskName_firstScreenListStyle);
 
-        taskName.setText(taskList.getTaskName());
+        taskName.setText(TaskLists.get(position).getTaskName());
 
         return convertView;
     }

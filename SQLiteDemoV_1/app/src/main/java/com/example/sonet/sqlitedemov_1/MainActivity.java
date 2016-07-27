@@ -24,7 +24,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     TaskListCustomAdapter adapter;
 
     Button clickBtn;
-    ImageView update;
     ListView listView;
 
     @Override
@@ -50,5 +49,4 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(new Intent(MainActivity.this, NewTask.class));
         }
     }
-
 }

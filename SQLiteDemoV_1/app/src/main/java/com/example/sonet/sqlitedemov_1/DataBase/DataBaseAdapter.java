@@ -26,6 +26,7 @@ public class DataBaseAdapter  {
     {
         SQLiteDatabase database = helper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
+        //contentValues.put(helper.UID,0);
         contentValues.put(helper.TASK_NAME,taskName);
         contentValues.put(helper.TASK_TAG,taskTag);
         contentValues.put(helper.TASK_DESCRIPTION,taskDescription);
@@ -35,19 +36,9 @@ public class DataBaseAdapter  {
 
     public Cursor querySelectAll()
     {
-        String[] columns = {helper.UID,helper.TASK_NAME,helper.TASK_TAG};
+        String[] columns = {helper.TASK_NAME,helper.TASK_TAG,helper.TASK_DESCRIPTION};
         SQLiteDatabase database = helper.getWritableDatabase();
         Cursor cursor =  database.query(helper.TABLE_NAME,columns,null,null,null,null,null);
-
-       /* StringBuffer buffer = new StringBuffer();
-
-        while(cursor.moveToNext())
-        {
-            int cid = cursor.getInt(0);
-            String name = cursor.getString(1);
-            String password = cursor.getString(2);
-            buffer.append(cid+" "+name+" "+password+"\n");
-        }*/
 
         return cursor;
     }

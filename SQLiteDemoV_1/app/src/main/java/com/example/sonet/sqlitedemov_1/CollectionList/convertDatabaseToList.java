@@ -23,7 +23,7 @@ public class ConvertDatabaseToList extends MainActivity {
         this.context = context;
     }
 
-    public  ArrayList<TaskList> getListArray() {
+    public ArrayList<TaskList> getListArray() {
         dataBaseAdapter = new DataBaseAdapter(context);
         cursor = dataBaseAdapter.querySelectAll();
 

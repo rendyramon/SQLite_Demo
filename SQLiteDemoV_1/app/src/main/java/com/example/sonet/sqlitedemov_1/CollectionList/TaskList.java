@@ -5,10 +5,18 @@ package com.example.sonet.sqlitedemov_1.CollectionList;
  * Created by Sonet on 7/27/2016.
  */
 public class TaskList {
-
+    int taskId;
     String taskName;
     String taskTag;
     String taskDescription;
+
+    public int getTaskId() {
+        return taskId;
+    }
+
+    public void setTaskId(int taskId) {
+        this.taskId = taskId;
+    }
 
     public String getTaskTag() {
         return taskTag;

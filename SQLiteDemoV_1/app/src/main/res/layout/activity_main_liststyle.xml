@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:padding="7dp"
+    android:padding="5dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -11,8 +11,8 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:padding="10dp"
-            android:textSize="30sp"
+            android:padding="5dp"
+            android:textSize="23sp"
             android:text="Sonet"
             android:id="@+id/taskName_firstScreenListStyle"
             android:layout_weight="1"
@@ -21,15 +21,15 @@
 
         <ImageView
             android:layout_weight=".3"
-            android:padding="10dp"
+            android:padding="2dp"
             android:src="@drawable/icon_update"
             android:layout_width="0dp"
-            android:layout_height="55dp" />
+            android:layout_height="38dp" />
 
         <ImageView
             android:layout_weight=".3"
-            android:padding="10dp"
-            android:layout_height="55dp"
+            android:padding="2dp"
+            android:layout_height="38dp"
             android:src="@drawable/icon_delete"
             android:layout_width="0dp"
             />
