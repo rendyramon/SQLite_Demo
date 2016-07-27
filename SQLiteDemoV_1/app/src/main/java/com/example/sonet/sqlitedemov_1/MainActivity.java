@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 import com.example.sonet.sqlitedemov_1.CollectionList.ConvertDatabaseToList;
@@ -21,14 +22,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ArrayList<TaskList> listsOfTask;
     TaskListCustomAdapter adapter;
 
-    Button clickBtn;
+    ImageButton clickBtn;
     ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        clickBtn = (Button) findViewById(R.id.newTaskBtn);
+        clickBtn = (ImageButton) findViewById(R.id.createNewBtn);
         listView = (ListView) findViewById(R.id.taskList);
 
         ConvertDatabaseToList taskList = new ConvertDatabaseToList(this);

@@ -9,7 +9,7 @@
     tools:context=".Task.NewTask">
 
     <TextView
-        android:padding="10dp"
+        android:padding="5dp"
         android:textSize="15sp"
         android:text="Title :"
         android:id="@+id/taskNameTextView"
@@ -21,11 +21,11 @@
         android:id="@+id/taskNameEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
+        android:padding="5dp"
         android:background="@color/formalGray" />
 
     <TextView
-        android:padding="10dp"
+        android:padding="5dp"
         android:textSize="15sp"
         android:text="Tag :"
         android:id="@+id/taskTagTextView"
@@ -42,7 +42,7 @@
         android:layout_height="wrap_content" />
 
     <TextView
-        android:padding="10dp"
+        android:padding="5dp"
         android:textSize="15sp"
         android:text="Description :"
         android:id="@+id/taskDescriptionTextView"
@@ -55,12 +55,13 @@
         android:gravity="left|start"
         android:id="@+id/taskDescriptionEditText"
         android:layout_width="match_parent"
-        android:layout_height="130dp" />
+        android:layout_height="90dp" />
 
     <Button
+        android:layout_marginTop="5dp"
         android:id="@+id/addTask"
         android:layout_gravity="right"
-        android:text="Submit"
+        android:text="Create"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 

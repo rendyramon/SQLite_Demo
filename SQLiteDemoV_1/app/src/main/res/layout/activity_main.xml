@@ -3,19 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
+    android:padding="7dp"
     android:layout_height="match_parent"
     tools:context="com.example.sonet.sqlitedemov_1.MainActivity">
 
-    <Button
-        android:text="new task"
-        android:id="@+id/newTaskBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
     <ListView
+        android:layout_marginTop="7dp"
         android:id="@+id/taskList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+
+    <include layout="@layout/create_new_floating"/>
 
 
 </LinearLayout>
