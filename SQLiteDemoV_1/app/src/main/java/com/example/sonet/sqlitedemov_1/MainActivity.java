@@ -1,52 +1,54 @@
 package com.example.sonet.sqlitedemov_1;
 
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ListView;
 
+import com.example.sonet.sqlitedemov_1.CollectionList.ConvertDatabaseToList;
+import com.example.sonet.sqlitedemov_1.CollectionList.TaskList;
+import com.example.sonet.sqlitedemov_1.CollectionList.TaskListCustomAdapter;
 import com.example.sonet.sqlitedemov_1.DataBase.DataBaseAdapter;
+import com.example.sonet.sqlitedemov_1.Task.NewTask;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.ArrayList;
 
-    DataBaseAdapter dataBaseAdapter;
-    SQLiteDatabase sqLiteDatabase;
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    EditText studentName;
-    EditText studentPassword;
+    ArrayList<TaskList> listsOfTask;
+    TaskListCustomAdapter adapter;
+
     Button clickBtn;
+    ImageView update;
+    ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-       /* studentName = (EditText) findViewById(R.id.studentName);
-        studentPassword = (EditText) findViewById(R.id.studentPassword);
-        clickBtn = (Button) findViewById(R.id.clickBtn);*/
-        dataBaseAdapter = new DataBaseAdapter(this);
+        clickBtn = (Button) findViewById(R.id.newTaskBtn);
+        listView = (ListView) findViewById(R.id.taskList);
+
+        ConvertDatabaseToList taskList= new ConvertDatabaseToList(this);
+        listsOfTask = taskList.getListArray();
+        adapter = new TaskListCustomAdapter(this,listsOfTask);
+        listView.setAdapter(adapter);
+
+        clickBtn.setOnClickListener(this);
     }
 
-  /*  public void click(View view) {
 
-        String name = studentName.getText().toString();
-        String password = studentPassword.getText().toString();
+    public void onClick(View v) {
 
-        long id = dataBaseAdapter.queryInsert(name,password);
-
-        if(id<0)
+        if (v == clickBtn)
         {
-            Massage.getMassage(this,"All is wrong");
+            startActivity(new Intent(MainActivity.this, NewTask.class));
         }
-        else
-        {
-            Massage.getMassage(this,"Inserted Successfully");
-        }
-  }
-*/
-  /*  public void getAllData(View view) {
-
-    }*/
+    }
 
 }

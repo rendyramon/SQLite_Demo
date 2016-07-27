@@ -5,12 +5,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.sonet.sqlitedemov_1.R;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -23,7 +20,7 @@ public class TaskListCustomAdapter extends ArrayAdapter<TaskList> {
     Context context;
 
     public TaskListCustomAdapter(Context context, ArrayList<TaskList> TaskLists) {
-        super(context, R.layout.first_screen_liststyle, TaskLists);
+        super(context, R.layout.activity_main_liststyle, TaskLists);
         this.TaskLists = TaskLists;
         this.context = context;
     }
@@ -34,7 +31,7 @@ public class TaskListCustomAdapter extends ArrayAdapter<TaskList> {
         if(convertView == null)
         {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.first_screen_liststyle,null,true);
+            convertView = inflater.inflate(R.layout.activity_main_liststyle,null,true);
         }
 
         TaskList taskList = TaskLists.get(position);

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
+    android:padding="7dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -17,6 +18,21 @@
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content" />
+
+        <ImageView
+            android:layout_weight=".3"
+            android:padding="10dp"
+            android:src="@drawable/icon_update"
+            android:layout_width="0dp"
+            android:layout_height="55dp" />
+
+        <ImageView
+            android:layout_weight=".3"
+            android:padding="10dp"
+            android:layout_height="55dp"
+            android:src="@drawable/icon_delete"
+            android:layout_width="0dp"
+            />
 
     </LinearLayout>
 
