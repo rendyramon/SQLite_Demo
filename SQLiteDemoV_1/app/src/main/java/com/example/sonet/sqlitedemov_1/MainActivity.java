@@ -31,29 +31,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         clickBtn = (Button) findViewById(R.id.newTaskBtn);
         listView = (ListView) findViewById(R.id.taskList);
 
-        ConvertDatabaseToList taskList= new ConvertDatabaseToList(this);
+        ConvertDatabaseToList taskList = new ConvertDatabaseToList(this);
         listsOfTask = taskList.getListArray();
-        adapter = new TaskListCustomAdapter(this,listsOfTask);
+        adapter = new TaskListCustomAdapter(this, listsOfTask);
         listView.setAdapter(adapter);
 
         clickBtn.setOnClickListener(this);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                Intent intent = new Intent(MainActivity.this,TaskDetailsActivity.class);
-                intent.putExtra("Position",String.valueOf(position));
-
-                startActivity(intent);
-            }
-        });
     }
 
 
     public void onClick(View v) {
 
-        if (v == clickBtn)
-        {
+        if (v == clickBtn) {
             startActivity(new Intent(MainActivity.this, NewTask.class));
         }
     }

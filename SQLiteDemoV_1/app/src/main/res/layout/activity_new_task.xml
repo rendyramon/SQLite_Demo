@@ -2,6 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:padding="10dp"
+    android:background="@color/activityBackground"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".Task.NewTask">
@@ -9,7 +11,7 @@
     <TextView
         android:padding="10dp"
         android:textSize="15sp"
-        android:text="Task Name :"
+        android:text="Title :"
         android:id="@+id/taskNameTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -25,7 +27,7 @@
     <TextView
         android:padding="10dp"
         android:textSize="15sp"
-        android:text="Task Tag :"
+        android:text="Tag :"
         android:id="@+id/taskTagTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -42,7 +44,7 @@
     <TextView
         android:padding="10dp"
         android:textSize="15sp"
-        android:text="Task Description :"
+        android:text="Description :"
         android:id="@+id/taskDescriptionTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />

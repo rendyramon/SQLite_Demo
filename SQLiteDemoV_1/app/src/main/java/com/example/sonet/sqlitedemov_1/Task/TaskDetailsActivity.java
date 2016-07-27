@@ -27,10 +27,7 @@ public class TaskDetailsActivity extends AppCompatActivity {
         this.context = context;
     }
 
-    public TaskDetailsActivity()
-    {
-
-    }
+    public TaskDetailsActivity(){}
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
