@@ -32,7 +32,6 @@ public class TaskListCustomAdapter extends ArrayAdapter<TaskList> {
     public class ViewHolder {
         TextView taskName;
         ImageButton deleteBtn;
-        ImageButton updateBtn;
     }
 
     @Override
@@ -46,8 +45,7 @@ public class TaskListCustomAdapter extends ArrayAdapter<TaskList> {
             convertView = inflater.inflate(R.layout.activity_main_liststyle, null, true);
 
             holder.taskName = (TextView) convertView.findViewById(R.id.taskName_firstScreenListStyle);
-            holder.deleteBtn = (ImageButton) convertView.findViewById(R.id.updateBtn);
-            holder.updateBtn = (ImageButton) convertView.findViewById(R.id.deleteBtn);
+            holder.deleteBtn = (ImageButton) convertView.findViewById(R.id.deleteBtn);
 
             convertView.setTag(holder);
         } else {
@@ -74,14 +72,6 @@ public class TaskListCustomAdapter extends ArrayAdapter<TaskList> {
 
             }
         });
-
-        holder.updateBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
 
         return convertView;
     }

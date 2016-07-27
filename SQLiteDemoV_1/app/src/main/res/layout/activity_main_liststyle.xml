@@ -20,15 +20,6 @@
             android:layout_height="wrap_content" />
 
         <ImageButton
-            android:layout_marginRight="15dp"
-            android:id="@+id/updateBtn"
-            android:layout_weight=".2"
-            android:padding="2dp"
-            android:background="@drawable/icon_update"
-            android:layout_width="0dp"
-            android:layout_height="38dp" />
-
-        <ImageButton
             android:id="@+id/deleteBtn"
             android:layout_weight=".2"
             android:padding="2dp"
@@ -38,10 +29,5 @@
             />
 
     </LinearLayout>
-
-    <View
-        android:background="@color/activityBackground"
-        android:layout_width="match_parent"
-        android:layout_height="3dp"/>
 
 </LinearLayout>
