@@ -6,34 +6,8 @@
     android:layout_height="match_parent"
     tools:context="com.example.sonet.sqlitedemov_1.MainActivity">
 
-    <EditText
-        android:textSize="20sp"
-        android:gravity="center"
-        android:hint="Enter Student Name"
-        android:id="@+id/studentName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <EditText
-        android:inputType="number"
-        android:textSize="20sp"
-        android:gravity="center"
-        android:hint="Enter Student ID"
-        android:id="@+id/studentPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+    <include layout="@layout/activity_new_task"/>
 
-    <Button
-        android:id="@+id/clickBtn"
-        android:onClick="click"
-        android:text="click"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <Button
-        android:id="@+id/allDataBtn"
-        android:onClick="getAllData"
-        android:text="All data"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
 
 
 </LinearLayout>

@@ -1,4 +1,4 @@
-package com.example.sonet.sqlitedemov_1;
+package com.example.sonet.sqlitedemov_1.DataBase;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -6,6 +6,10 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import com.example.sonet.sqlitedemov_1.Massage;
+
+import java.util.ArrayList;
 
 /**
  * Created by Sonet on 7/25/2016.
@@ -18,23 +22,24 @@ public class DataBaseAdapter  {
         helper = new DataBaseHelper(context);
     }
 
-    public long queryInsert(String name, String password)
+    public long queryInsert(String taskName, String taskTag, String taskDescription)
     {
         SQLiteDatabase database = helper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(helper.NAME,name);
-        contentValues.put(helper.PASSWORD,password);
+        contentValues.put(helper.TASK_NAME,taskName);
+        contentValues.put(helper.TASK_TAG,taskTag);
+        contentValues.put(helper.TASK_DESCRIPTION,taskDescription);
         long id = database.insert(helper.TABLE_NAME,null,contentValues);
         return id;
     }
 
-    public String querySelectAll()
+    public Cursor querySelectAll()
     {
-        String[] columns = {helper.UID,helper.NAME,helper.PASSWORD};
+        String[] columns = {helper.UID,helper.TASK_NAME,helper.TASK_TAG};
         SQLiteDatabase database = helper.getWritableDatabase();
         Cursor cursor =  database.query(helper.TABLE_NAME,columns,null,null,null,null,null);
 
-        StringBuffer buffer = new StringBuffer();
+       /* StringBuffer buffer = new StringBuffer();
 
         while(cursor.moveToNext())
         {
@@ -42,9 +47,9 @@ public class DataBaseAdapter  {
             String name = cursor.getString(1);
             String password = cursor.getString(2);
             buffer.append(cid+" "+name+" "+password+"\n");
-        }
+        }*/
 
-        return buffer.toString();
+        return cursor;
     }
 
     static class DataBaseHelper extends SQLiteOpenHelper
@@ -52,14 +57,15 @@ public class DataBaseAdapter  {
         private static String DATABASE_NAME = "student";
         private static int DATABASE_VERSION = 1;
         private static String UID = "_id";
-        private static String TABLE_NAME = "STUDENT";
-        private static String NAME = "student_name";
-        private static String PASSWORD = "password";
+        private static String TABLE_NAME = "TASK";
+        private static String TASK_NAME = "task_name";
+        private static String TASK_TAG = "task_tag";
+        private static String TASK_DESCRIPTION = "task_description";
         String error = "";
 
         private static String CREATE_TABLE = "CREATE TABLE "+TABLE_NAME+"("
                 +UID+" INTEGER PRIMARY KEY AUTOINCREMENT,"
-                +NAME+" VARCHAR (200), "+PASSWORD+" VARCHAR (200));";
+                + TASK_NAME +" VARCHAR (200), "+ TASK_TAG +" VARCHAR (200), "+ TASK_DESCRIPTION +" VARCHAR(400));";
         private static String DROP_TABLE = "DROP TABLE IF EXISTS "+TABLE_NAME;
         private static Context context;
 
@@ -98,6 +104,4 @@ public class DataBaseAdapter  {
 
         }
     }
-
-
 }

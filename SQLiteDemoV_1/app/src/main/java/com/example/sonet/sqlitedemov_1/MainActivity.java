@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.sonet.sqlitedemov_1.DataBase.DataBaseAdapter;
+
 public class MainActivity extends AppCompatActivity {
 
     DataBaseAdapter dataBaseAdapter;
@@ -20,18 +22,18 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        studentName = (EditText) findViewById(R.id.studentName);
+       /* studentName = (EditText) findViewById(R.id.studentName);
         studentPassword = (EditText) findViewById(R.id.studentPassword);
-        clickBtn = (Button) findViewById(R.id.clickBtn);
+        clickBtn = (Button) findViewById(R.id.clickBtn);*/
         dataBaseAdapter = new DataBaseAdapter(this);
     }
 
-    public void click(View view) {
+  /*  public void click(View view) {
 
         String name = studentName.getText().toString();
         String password = studentPassword.getText().toString();
 
-       long id = dataBaseAdapter.queryInsert(name,password);
+        long id = dataBaseAdapter.queryInsert(name,password);
 
         if(id<0)
         {
@@ -41,10 +43,10 @@ public class MainActivity extends AppCompatActivity {
         {
             Massage.getMassage(this,"Inserted Successfully");
         }
-    }
+  }
+*/
+  /*  public void getAllData(View view) {
 
-    public void getAllData(View view) {
-        String alldata= dataBaseAdapter.querySelectAll();
-        Massage.getMassage(this,alldata);
-    }
+    }*/
+
 }
