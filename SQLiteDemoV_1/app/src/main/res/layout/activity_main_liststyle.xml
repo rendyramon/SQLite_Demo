@@ -20,6 +20,7 @@
             android:layout_height="wrap_content" />
 
         <ImageView
+            android:id="@+id/updateIcon"
             android:layout_weight=".3"
             android:padding="2dp"
             android:src="@drawable/icon_update"
@@ -27,6 +28,7 @@
             android:layout_height="38dp" />
 
         <ImageView
+            android:id="@+id/deleteIcon"
             android:layout_weight=".3"
             android:padding="2dp"
             android:layout_height="38dp"

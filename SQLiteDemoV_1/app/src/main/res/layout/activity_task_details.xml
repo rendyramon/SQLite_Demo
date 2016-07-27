@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:padding="10dp"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".Task.TaskDetailsActivity">
+
+    <TextView
+        android:textStyle="bold|italic"
+        android:gravity="center"
+        android:padding="3dp"
+        android:textSize="25sp"
+        android:text="Task Detail"
+        android:textColor="#f3f3f5"
+        android:background="#1c2d76"
+        android:id="@+id/titleTask"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+
+    <TextView
+        android:textColor="#000000"
+        android:background="@color/formalGray"
+        android:id="@+id/taskDetailsTextView"
+        android:layout_width="match_parent"
+        android:layout_height="300dp" />
+
+</LinearLayout>
