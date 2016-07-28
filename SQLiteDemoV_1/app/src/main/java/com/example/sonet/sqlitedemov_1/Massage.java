@@ -8,8 +8,7 @@ import android.widget.Toast;
  */
 public class Massage {
 
-    public static void getMassage(Context context, String massage)
-    {
-        Toast.makeText(context, massage, Toast.LENGTH_LONG).show();
+    public static void getMassage(Context context, String massage) {
+        Toast.makeText(context, massage, Toast.LENGTH_SHORT).show();
     }
 }

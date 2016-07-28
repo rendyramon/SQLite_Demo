@@ -5,20 +5,21 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.sonet.sqlitedemov_1.DataBase.DataBaseAdapter;
 import com.example.sonet.sqlitedemov_1.Massage;
 import com.example.sonet.sqlitedemov_1.R;
 
-public class NewTask extends AppCompatActivity implements View.OnClickListener {
+public class NewTaskActivity extends AppCompatActivity implements View.OnClickListener {
 
     DataBaseAdapter databaseHelper;
 
     EditText taskName;
     EditText taskTag;
     EditText taskDescription;
-    Button submitBtn;
+    ImageButton submitBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +29,8 @@ public class NewTask extends AppCompatActivity implements View.OnClickListener {
         taskName = (EditText) findViewById(R.id.taskNameEditText);
         taskTag = (EditText) findViewById(R.id.taskTagEditText);
         taskDescription = (EditText) findViewById(R.id.taskDescriptionEditText);
-        submitBtn = (Button) findViewById(R.id.addTask);
+        submitBtn = (ImageButton) findViewById(R.id.saveUpdateBtn);
+
         databaseHelper = new DataBaseAdapter(this);
 
         submitBtn.setOnClickListener(this);

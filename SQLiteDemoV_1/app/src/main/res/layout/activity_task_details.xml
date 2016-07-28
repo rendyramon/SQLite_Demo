@@ -8,15 +8,6 @@
 
    <include layout="@layout/task_layout"/>
 
-    <ImageButton
-        android:id="@+id/saveUpdateBtn"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:src="@drawable/icon_save"
-        android:layout_marginRight="18dp"
-        android:layout_marginBottom="18dp"
-        android:background="@drawable/oval"
-        android:layout_width="55dp"
-        android:layout_height="55dp" />
+    <include layout="@layout/save_floating_button"/>
 
 </RelativeLayout>

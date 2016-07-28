@@ -14,37 +14,55 @@ import java.util.ArrayList;
 /**
  * Created by Sonet on 7/25/2016.
  */
-public class DataBaseAdapter  {
+public class DataBaseAdapter {
 
     DataBaseHelper helper;
+    Context context;
 
     public DataBaseAdapter(Context context) {
+        this.context = context;
         helper = new DataBaseHelper(context);
     }
 
-    public long queryInsert(String taskName, String taskTag, String taskDescription)
-    {
+    public long queryInsert(String taskName, String taskTag, String taskDescription) {
         SQLiteDatabase database = helper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        //contentValues.put(helper.UID,0);
-        contentValues.put(helper.TASK_NAME,taskName);
-        contentValues.put(helper.TASK_TAG,taskTag);
-        contentValues.put(helper.TASK_DESCRIPTION,taskDescription);
-        long id = database.insert(helper.TABLE_NAME,null,contentValues);
+        contentValues.put(helper.TASK_NAME, taskName);
+        contentValues.put(helper.TASK_TAG, taskTag);
+        contentValues.put(helper.TASK_DESCRIPTION, taskDescription);
+        long id = database.insert(helper.TABLE_NAME, null, contentValues);
         return id;
     }
 
-    public Cursor querySelectAll()
-    {
-        String[] columns = {helper.TASK_NAME,helper.TASK_TAG,helper.TASK_DESCRIPTION};
+    public Cursor querySelectAll() {
+        String[] columns = {helper.TASK_NAME, helper.TASK_TAG, helper.TASK_DESCRIPTION, helper.UID};
         SQLiteDatabase database = helper.getWritableDatabase();
-        Cursor cursor =  database.query(helper.TABLE_NAME,columns,null,null,null,null,null);
+        Cursor cursor = database.query(helper.TABLE_NAME, columns, null, null, null, null, null);
 
         return cursor;
     }
 
-    static class DataBaseHelper extends SQLiteOpenHelper
-    {
+    public void queryUpdate(String newTaskName, String newTaskTag, String newTaskDescription, int taskID) {
+
+        SQLiteDatabase database = helper.getWritableDatabase();
+
+        String updateQuery = "UPDATE " + helper.TABLE_NAME + " SET " + helper.TASK_NAME + " = '" + newTaskName +
+                "'," + helper.TASK_TAG + " = '" + newTaskTag + "'," + helper.TASK_DESCRIPTION + " = '" + newTaskDescription + "' WHERE " + helper.UID + " = " + taskID;
+
+        try {
+            database.execSQL(updateQuery);
+            Massage.getMassage(context, "Updated Successfully");
+
+        } catch (Exception e) {
+            Massage.getMassage(context, e.toString());
+            e.printStackTrace();
+        }
+
+
+    }
+
+
+    static class DataBaseHelper extends SQLiteOpenHelper {
         private static String DATABASE_NAME = "student";
         private static int DATABASE_VERSION = 1;
         private static String UID = "_id";
@@ -54,14 +72,14 @@ public class DataBaseAdapter  {
         private static String TASK_DESCRIPTION = "task_description";
         String error = "";
 
-        private static String CREATE_TABLE = "CREATE TABLE "+TABLE_NAME+"("
-                +UID+" INTEGER PRIMARY KEY AUTOINCREMENT,"
-                + TASK_NAME +" VARCHAR (200), "+ TASK_TAG +" VARCHAR (200), "+ TASK_DESCRIPTION +" VARCHAR(400));";
-        private static String DROP_TABLE = "DROP TABLE IF EXISTS "+TABLE_NAME;
+        private static String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + "("
+                + UID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + TASK_NAME + " VARCHAR (200), " + TASK_TAG + " VARCHAR (200), " + TASK_DESCRIPTION + " VARCHAR(400));";
+        private static String DROP_TABLE = "DROP TABLE IF EXISTS " + TABLE_NAME;
         private static Context context;
 
         public DataBaseHelper(Context context) {
-            super(context, DATABASE_NAME,null, DATABASE_VERSION);
+            super(context, DATABASE_NAME, null, DATABASE_VERSION);
             this.context = context;
         }
 
@@ -69,10 +87,10 @@ public class DataBaseAdapter  {
         public void onCreate(SQLiteDatabase db) {
 
             try {
-                Massage.getMassage(this.context," db File Created Successfully ");
+                Massage.getMassage(this.context, " db File Created Successfully ");
                 db.execSQL(CREATE_TABLE);
             } catch (SQLException e) {
-                Massage.getMassage(this.context," "+e);
+                Massage.getMassage(this.context, " " + e);
                 error = e.toString();
                 e.printStackTrace();
             }
@@ -82,14 +100,14 @@ public class DataBaseAdapter  {
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
-            Massage.getMassage(this.context," onUpgrade called ");
+            Massage.getMassage(this.context, " onUpgrade called ");
 
 
             try {
                 db.execSQL(DROP_TABLE);
                 onCreate(db);
             } catch (SQLException e) {
-                Massage.getMassage(this.context," "+e);
+                Massage.getMassage(this.context, " " + e);
                 error = e.toString();
             }
 

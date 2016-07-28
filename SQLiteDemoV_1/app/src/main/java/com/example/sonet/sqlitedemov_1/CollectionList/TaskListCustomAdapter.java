@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.example.sonet.sqlitedemov_1.Massage;
 import com.example.sonet.sqlitedemov_1.R;
 import com.example.sonet.sqlitedemov_1.Task.TaskDetailsActivity;
 
@@ -50,9 +51,7 @@ public class TaskListCustomAdapter extends ArrayAdapter<TaskList> {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        final String taskName = TaskLists.get(position).getTaskName();
-        final String taskTag = TaskLists.get(position).getTaskTag();
-        final String taskDescription = TaskLists.get(position).getTaskDescription();
+        final int taskId = TaskLists.get(position).getTaskId();
 
         holder.taskName.setText(TaskLists.get(position).getTaskName());
 
@@ -60,10 +59,10 @@ public class TaskListCustomAdapter extends ArrayAdapter<TaskList> {
             @Override
             public void onClick(View v) {
 
+                Massage.getMassage(context, "ROW ID = " + taskId);
+
                 Intent intent = new Intent(context, TaskDetailsActivity.class);
-                intent.putExtra("name", taskName);
-                intent.putExtra("tag", taskTag);
-                intent.putExtra("description", taskDescription);
+                intent.putExtra("taskID", taskId);
 
                 context.startActivity(intent);
             }

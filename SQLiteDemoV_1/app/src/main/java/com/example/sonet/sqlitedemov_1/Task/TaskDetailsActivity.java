@@ -8,32 +8,31 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.sonet.sqlitedemov_1.CollectionList.ConvertDatabaseToList;
 import com.example.sonet.sqlitedemov_1.CollectionList.TaskList;
+import com.example.sonet.sqlitedemov_1.DataBase.DataBaseAdapter;
+import com.example.sonet.sqlitedemov_1.Massage;
 import com.example.sonet.sqlitedemov_1.R;
 
 import java.util.ArrayList;
 
 public class TaskDetailsActivity extends AppCompatActivity implements View.OnClickListener {
 
+    DataBaseAdapter databaseHelper;
+    ArrayList<TaskList> taskLists;
+
     String taskName;
     String taskTag;
     String taskDescription;
+    int taskID;
+    int arryListPosition;
 
     EditText nameEditText;
     EditText tagEditText;
     EditText descriptionEditText;
     ImageButton saveUpdateBtn;
-
-    Context context;
-
-    public TaskDetailsActivity(Context context) {
-        this.context = context;
-    }
-
-    public TaskDetailsActivity() {
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,9 +44,15 @@ public class TaskDetailsActivity extends AppCompatActivity implements View.OnCli
         descriptionEditText = (EditText) findViewById(R.id.taskDescriptionEditText);
         saveUpdateBtn = (ImageButton) findViewById(R.id.saveUpdateBtn);
 
-        taskName = getIntent().getStringExtra("name");
-        taskTag = getIntent().getStringExtra("tag");
-        taskDescription = getIntent().getStringExtra("description");
+        taskLists = new ConvertDatabaseToList(this).getListArray();
+        databaseHelper = new DataBaseAdapter(this);
+
+        taskID = getIntent().getIntExtra("taskID", 0);
+        arryListPosition = taskID - 1;
+
+        taskName = taskLists.get(arryListPosition).getTaskName();
+        taskTag = taskLists.get(arryListPosition).getTaskTag();
+        taskDescription = taskLists.get(arryListPosition).getTaskDescription();
 
         nameEditText.setText(taskName);
         tagEditText.setText(taskTag);
@@ -59,5 +64,10 @@ public class TaskDetailsActivity extends AppCompatActivity implements View.OnCli
     @Override
     public void onClick(View v) {
 
+        taskName = nameEditText.getText().toString();
+        taskTag = tagEditText.getText().toString();
+        taskDescription = descriptionEditText.getText().toString();
+
+        databaseHelper.queryUpdate(taskName, taskTag, taskDescription, taskID);
     }
 }

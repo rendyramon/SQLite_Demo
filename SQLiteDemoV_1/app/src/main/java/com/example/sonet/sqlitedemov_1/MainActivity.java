@@ -4,16 +4,13 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
 import com.example.sonet.sqlitedemov_1.CollectionList.ConvertDatabaseToList;
 import com.example.sonet.sqlitedemov_1.CollectionList.TaskList;
 import com.example.sonet.sqlitedemov_1.CollectionList.TaskListCustomAdapter;
-import com.example.sonet.sqlitedemov_1.Task.NewTask;
-import com.example.sonet.sqlitedemov_1.Task.TaskDetailsActivity;
+import com.example.sonet.sqlitedemov_1.Task.NewTaskActivity;
 
 import java.util.ArrayList;
 
@@ -44,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
 
         if (v == clickBtn) {
-            startActivity(new Intent(MainActivity.this, NewTask.class));
+            startActivity(new Intent(MainActivity.this, NewTaskActivity.class));
         }
     }
 }

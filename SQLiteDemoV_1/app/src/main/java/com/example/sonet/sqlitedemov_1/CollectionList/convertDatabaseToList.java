@@ -35,6 +35,7 @@ public class ConvertDatabaseToList extends MainActivity {
                     taskList.setTaskName(cursor.getString(0));
                     taskList.setTaskTag(cursor.getString(1));
                     taskList.setTaskDescription(cursor.getString(2));
+                    taskList.setTaskId(Integer.parseInt(cursor.getString(3)));
 
                     taskLists.add(taskList);
 
