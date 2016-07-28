@@ -21,7 +21,6 @@ public class TaskListCustomAdapter extends ArrayAdapter<TaskList> {
 
     ArrayList<TaskList> TaskLists;
     Context context;
-    private static int POSITION = 0;
 
     public TaskListCustomAdapter(Context context, ArrayList<TaskList> TaskLists) {
         super(context, R.layout.activity_main_liststyle, TaskLists);
@@ -35,9 +34,8 @@ public class TaskListCustomAdapter extends ArrayAdapter<TaskList> {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
 
-        this.POSITION = position;
         ViewHolder holder = new ViewHolder();
 
         if (convertView == null) {
@@ -52,6 +50,10 @@ public class TaskListCustomAdapter extends ArrayAdapter<TaskList> {
             holder = (ViewHolder) convertView.getTag();
         }
 
+        final String taskName = TaskLists.get(position).getTaskName();
+        final String taskTag = TaskLists.get(position).getTaskTag();
+        final String taskDescription = TaskLists.get(position).getTaskDescription();
+
         holder.taskName.setText(TaskLists.get(position).getTaskName());
 
         holder.taskName.setOnClickListener(new View.OnClickListener() {
@@ -59,10 +61,11 @@ public class TaskListCustomAdapter extends ArrayAdapter<TaskList> {
             public void onClick(View v) {
 
                 Intent intent = new Intent(context, TaskDetailsActivity.class);
-                intent.putExtra("Position", String.valueOf(POSITION));
+                intent.putExtra("name", taskName);
+                intent.putExtra("tag", taskTag);
+                intent.putExtra("description", taskDescription);
 
                 context.startActivity(intent);
-
             }
         });
 

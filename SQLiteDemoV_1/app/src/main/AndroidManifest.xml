@@ -17,8 +17,6 @@
         </activity>
         <activity android:name=".Task.NewTask" />
         <activity android:name=".Task.TaskDetailsActivity" />
-        <activity android:name=".Task.UpdateTaskActivity" >
-        </activity>
     </application>
 
 </manifest>

@@ -4,6 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.sonet.sqlitedemov_1.CollectionList.ConvertDatabaseToList;
@@ -12,40 +15,49 @@ import com.example.sonet.sqlitedemov_1.R;
 
 import java.util.ArrayList;
 
-public class TaskDetailsActivity extends AppCompatActivity {
+public class TaskDetailsActivity extends AppCompatActivity implements View.OnClickListener {
 
-    ArrayList<TaskList> taskLists = new ArrayList<>();
-    int Position;
     String taskName;
     String taskTag;
     String taskDescription;
-    Context context;
-    TextView taskDetails;
 
-    public TaskDetailsActivity(Context context)
-    {
+    EditText nameEditText;
+    EditText tagEditText;
+    EditText descriptionEditText;
+    ImageButton saveUpdateBtn;
+
+    Context context;
+
+    public TaskDetailsActivity(Context context) {
         this.context = context;
     }
 
-    public TaskDetailsActivity(){}
+    public TaskDetailsActivity() {
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task_details);
 
-        Intent intent = getIntent();
-        Position = Integer.parseInt(intent.getStringExtra("Position"));
+        nameEditText = (EditText) findViewById(R.id.taskNameEditText);
+        tagEditText = (EditText) findViewById(R.id.taskTagEditText);
+        descriptionEditText = (EditText) findViewById(R.id.taskDescriptionEditText);
+        saveUpdateBtn = (ImageButton) findViewById(R.id.saveUpdateBtn);
 
-        taskLists = new ConvertDatabaseToList(this).getListArray();
-        taskName = taskLists.get(Position).getTaskName();
-        taskTag = taskLists.get(Position).getTaskTag();
-        taskDescription = taskLists.get(Position).getTaskDescription();
+        taskName = getIntent().getStringExtra("name");
+        taskTag = getIntent().getStringExtra("tag");
+        taskDescription = getIntent().getStringExtra("description");
 
-        String totalInfo = taskName +" \n" +taskTag +" \n" +taskDescription;
+        nameEditText.setText(taskName);
+        tagEditText.setText(taskTag);
+        descriptionEditText.setText(taskDescription);
 
-        taskDetails = (TextView) findViewById(R.id.taskDetailsTextView);
+        saveUpdateBtn.setOnClickListener(this);
+    }
 
-        taskDetails.setText(totalInfo);
+    @Override
+    public void onClick(View v) {
+
     }
 }

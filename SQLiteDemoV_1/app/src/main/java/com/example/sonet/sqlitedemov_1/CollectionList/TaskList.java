@@ -14,6 +14,14 @@ public class TaskList {
         return taskId;
     }
 
+    public String getTaskName() {
+        return taskName;
+    }
+
+    public void setTaskName(String taskName) {
+        this.taskName = taskName;
+    }
+
     public void setTaskId(int taskId) {
         this.taskId = taskId;
     }
@@ -24,14 +32,6 @@ public class TaskList {
 
     public void setTaskTag(String taskTag) {
         this.taskTag = taskTag;
-    }
-
-    public String getTaskName() {
-        return taskName;
-    }
-
-    public void setTaskName(String taskName) {
-        this.taskName = taskName;
     }
 
     public String getTaskDescription() {

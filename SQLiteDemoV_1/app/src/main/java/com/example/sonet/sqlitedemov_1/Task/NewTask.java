@@ -26,8 +26,8 @@ public class NewTask extends AppCompatActivity implements View.OnClickListener {
         setContentView(R.layout.activity_new_task);
 
         taskName = (EditText) findViewById(R.id.taskNameEditText);
-        taskTag = (EditText) findViewById(R.id.taskDescriptionEditText);
-        taskDescription = (EditText) findViewById(R.id.taskTagEditText);
+        taskTag = (EditText) findViewById(R.id.taskTagEditText);
+        taskDescription = (EditText) findViewById(R.id.taskDescriptionEditText);
         submitBtn = (Button) findViewById(R.id.addTask);
         databaseHelper = new DataBaseAdapter(this);
 
