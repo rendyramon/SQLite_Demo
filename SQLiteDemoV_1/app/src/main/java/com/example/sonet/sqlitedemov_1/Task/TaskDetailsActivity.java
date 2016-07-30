@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.example.sonet.sqlitedemov_1.CollectionList.ConvertDatabaseToList;
 import com.example.sonet.sqlitedemov_1.CollectionList.TaskList;
 import com.example.sonet.sqlitedemov_1.DataBase.DataBaseAdapter;
+import com.example.sonet.sqlitedemov_1.MainActivity;
 import com.example.sonet.sqlitedemov_1.Massage;
 import com.example.sonet.sqlitedemov_1.R;
 
@@ -69,5 +70,6 @@ public class TaskDetailsActivity extends AppCompatActivity implements View.OnCli
         taskDescription = descriptionEditText.getText().toString();
 
         databaseHelper.queryUpdate(taskName, taskTag, taskDescription, taskID);
+        startActivity(new Intent(this, MainActivity.class));
     }
 }

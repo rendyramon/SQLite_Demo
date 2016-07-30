@@ -9,6 +9,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.example.sonet.sqlitedemov_1.DataBase.DataBaseAdapter;
+import com.example.sonet.sqlitedemov_1.MainActivity;
 import com.example.sonet.sqlitedemov_1.Massage;
 import com.example.sonet.sqlitedemov_1.R;
 import com.example.sonet.sqlitedemov_1.Task.TaskDetailsActivity;
@@ -21,6 +23,7 @@ import java.util.ArrayList;
 public class TaskListCustomAdapter extends ArrayAdapter<TaskList> {
 
     ArrayList<TaskList> TaskLists;
+    DataBaseAdapter databaseHelper;
     Context context;
 
     public TaskListCustomAdapter(Context context, ArrayList<TaskList> TaskLists) {
@@ -72,6 +75,11 @@ public class TaskListCustomAdapter extends ArrayAdapter<TaskList> {
             @Override
             public void onClick(View v) {
 
+               /* databaseHelper = new DataBaseAdapter(context);
+                TaskLists.remove(position);
+                databaseHelper.queryDelete(taskId);
+
+                context.startActivity(new Intent(context, MainActivity.class));*/
             }
         });
 
