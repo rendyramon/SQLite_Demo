@@ -1,6 +1,5 @@
 package com.example.sonet.sqlitedemov_1.Task;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,7 +9,6 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.sonet.sqlitedemov_1.DataBase.DataBaseAdapter;
-import com.example.sonet.sqlitedemov_1.MainActivity;
 import com.example.sonet.sqlitedemov_1.Massage;
 import com.example.sonet.sqlitedemov_1.R;
 
@@ -51,10 +49,7 @@ public class NewTaskActivity extends AppCompatActivity implements View.OnClickLi
         if (id < 0)
             Massage.getMassage(this, "Failed !!!");
         else
-        {
-            Massage.getMassage(this, "Created Successfully");
-            startActivity(new Intent(this, MainActivity.class));
-        }
+            Massage.getMassage(this, "Inserted data");
 
     }
 }

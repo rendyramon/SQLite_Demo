@@ -57,20 +57,8 @@ public class DataBaseAdapter {
             Massage.getMassage(context, e.toString());
             e.printStackTrace();
         }
-    }
 
-    public void queryDelete(int taskID)
-    {
-        SQLiteDatabase database = helper.getWritableDatabase();
-        String deleteQuery = "DELETE FROM " +helper.TABLE_NAME+" WHERE "+helper.UID+ " = " +taskID;
 
-        try {
-            database.execSQL(deleteQuery);
-            Massage.getMassage(context,"Deleted Successfully");
-        } catch (SQLException e) {
-            Massage.getMassage(context, e.toString());
-            e.printStackTrace();
-        }
     }
 
 
